@@ -19,8 +19,7 @@ Apple's private Wi-Fi address feature rotates your MAC every two weeks. This scr
 - Validates inputs and fails loudly with clear error messages
 
 > [!IMPORTANT]
-> - MAC address changes do not persist across reboots or Wi-Fi toggles
-> - Wi-Fi must be disconnected before 
+> - Wi-Fi network must be disassociated before running (NOT disabled!)
 
 ### Files
 
@@ -46,16 +45,16 @@ cd macos-spoof-script
 chmod +x spoof.sh
 ```
 
-### 3. Move/symlink script to local system binaries directory
+### 3. Copy files to local system binaries directory
 
 ```zsh
+# Create if you don't have it
 mkdir -p /usr/local/sbin
 
-# move script
-mv spoof.sh /usr/local/sbin/
-
-# symlink script
-ln -s spoof.sh /usr/local/sbin/
+# Copy files
+cp spoof.sh /usr/local/sbin/spoof.sh
+cp first-names.txt /usr/local/sbin/first-names.txt
+cp mac-address-prefixes.txt /usr/local/sbin/mac-address-prefixes.txt
 ```
 
 
@@ -90,7 +89,7 @@ scutil --get LocalHostName
 scutil --get HostName
 
 # MAC address
-ifconfig en0 | grep | awk {print $2}
+ifconfig en0 | grep ether | awk '{print $2}'
 
 # Hardware MAC address (this the original MAC address)
 networksetup -listallhardwareports | awk -v RS= '/en0/{print $NF}'
