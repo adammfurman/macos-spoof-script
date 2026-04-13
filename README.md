@@ -20,8 +20,8 @@ Apple's private Wi-Fi address feature rotates your MAC every two weeks. This scr
 
 > [!IMPORTANT]
 > - Wi-Fi network must be disassociated before running (NOT disabled!)
-> - Only hostname spoofs at reboot because Wi-Fi is either off or connected during boot
-> - Must run manually to spoof MAC adress
+> - Only hostname spoofs at reboot because Wi-Fi is in indeterminate state during boot
+> - Must run manually to spoof MAC address
 
 ### Files
 
