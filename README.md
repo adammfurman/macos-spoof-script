@@ -29,7 +29,7 @@ Apple's private Wi-Fi address feature rotates your MAC every two weeks. This scr
 spoof.sh                        # Main script
 first-names.txt                 # One first name per line
 mac-address-prefixes.txt        # One OUI prefix per line (XX:XX:XX uppercase hex)
-local.spoof.plist               # Launch agent file to run at login
+local.spoof.plist               # Launch daemon file to run at login
 ```
 
 ## Setup
@@ -47,7 +47,7 @@ cd macos-spoof-script
 chmod +x spoof.sh
 ```
 
-### 3. Copy files to local system binaries directory
+### 3. Copy files to local system directories
 
 ```zsh
 # Create if you don't have it
@@ -57,8 +57,10 @@ mkdir -p /usr/local/sbin
 cp spoof.sh /usr/local/sbin/spoof.sh
 cp first-names.txt /usr/local/sbin/first-names.txt
 cp mac-address-prefixes.txt /usr/local/sbin/mac-address-prefixes.txt
-```
 
+# launch daemon
+cp local.spoof.plist /Library/LaunchDaemons/
+```
 
 ## Usage
 
