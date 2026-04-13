@@ -67,11 +67,11 @@ computer_name="${first_name}'s ${model_name}"
 host_name=$(printf '%s' "$computer_name" | sed -e "s/'//g" -e 's/ /-/g' -e 's/-\{2,\}/-/g' -e 's/^-//' -e 's/-$//')
 
 # Set ComputerName (user-friendly identiifer)
-# sudo scutil --set ComputerName "$computer_name"
+sudo scutil --set ComputerName "$computer_name"
 # # Set LocalHostName (name for Bonjour services)
-# sudo scutil --set LocalHostName "$host_name"
+sudo scutil --set LocalHostName "$host_name"
 # # Set HostName (name used for DNS and network resolution) 
-# sudo scutil --set HostName "$host_name"
+sudo scutil --set HostName "$host_name"
 
 # Print new computer/host names
 echo "Spoofed computer name to $computer_name"
